@@ -19,8 +19,12 @@ export default {
 		},
 		extend: {
 			fontFamily: {
-				cormorant: ['Cormorant Garamond', 'serif'],
-				golos: ['Golos Text', 'sans-serif'],
+				// TF2-style fonts
+				tf2: ['Teko', 'Impact', 'Arial Narrow', 'sans-serif'],
+				tf2body: ['Oswald', 'Arial Narrow', 'sans-serif'],
+				// keep old fonts as fallback
+				cormorant: ['Teko', 'Impact', 'sans-serif'],
+				golos: ['Oswald', 'Arial Narrow', 'sans-serif'],
 			},
 			colors: {
 				border: 'hsl(var(--border))',
@@ -28,10 +32,25 @@ export default {
 				ring: 'hsl(var(--ring))',
 				background: 'hsl(var(--background))',
 				foreground: 'hsl(var(--foreground))',
+				// TF2 colors
+				tf2: {
+					red: 'hsl(var(--tf2-red))',
+					orange: 'hsl(var(--tf2-orange))',
+					yellow: 'hsl(var(--tf2-yellow))',
+					metal: 'hsl(var(--tf2-metal))',
+					'metal-light': 'hsl(var(--tf2-metal-light))',
+					'metal-dark': 'hsl(var(--tf2-metal-dark))',
+					cream: 'hsl(var(--tf2-cream))',
+					dark: 'hsl(var(--tf2-dark))',
+					rust: 'hsl(var(--tf2-rust))',
+					blu: 'hsl(var(--tf2-blu))',
+					'blu-dark': 'hsl(var(--tf2-blu-dark))',
+				},
+				// keep gold as alias for tf2 orange/yellow
 				gold: {
-					DEFAULT: 'hsl(var(--gold))',
-					light: 'hsl(var(--gold-light))',
-					muted: 'hsl(var(--gold-muted))',
+					DEFAULT: 'hsl(var(--tf2-orange))',
+					light: 'hsl(var(--tf2-yellow))',
+					muted: 'hsl(var(--tf2-rust))',
 				},
 				primary: {
 					DEFAULT: 'hsl(var(--primary))',
@@ -64,8 +83,8 @@ export default {
 			},
 			borderRadius: {
 				lg: 'var(--radius)',
-				md: 'calc(var(--radius) - 2px)',
-				sm: 'calc(var(--radius) - 4px)'
+				md: 'var(--radius)',
+				sm: 'var(--radius)'
 			},
 			keyframes: {
 				'accordion-down': {
@@ -77,24 +96,31 @@ export default {
 					to: { height: '0' }
 				},
 				'fade-in': {
-					from: { opacity: '0', transform: 'translateY(24px)' },
+					from: { opacity: '0', transform: 'translateY(16px)' },
 					to: { opacity: '1', transform: 'translateY(0)' }
 				},
 				'fade-in-left': {
-					from: { opacity: '0', transform: 'translateX(-32px)' },
+					from: { opacity: '0', transform: 'translateX(-24px)' },
 					to: { opacity: '1', transform: 'translateX(0)' }
 				},
 				'line-expand': {
 					from: { width: '0%' },
 					to: { width: '100%' }
 				},
-				'shimmer': {
-					'0%': { backgroundPosition: '-200% center' },
-					'100%': { backgroundPosition: '200% center' },
+				// TF2 shockwave / slam
+				'slam': {
+					'0%': { transform: 'scale(1.08)', opacity: '0' },
+					'60%': { transform: 'scale(0.97)' },
+					'100%': { transform: 'scale(1)', opacity: '1' },
+				},
+				'flicker': {
+					'0%, 100%': { opacity: '1' },
+					'50%': { opacity: '0.85' },
+					'75%': { opacity: '0.92' },
 				},
 				'float': {
 					'0%, 100%': { transform: 'translateY(0px)' },
-					'50%': { transform: 'translateY(-8px)' },
+					'50%': { transform: 'translateY(-6px)' },
 				},
 				'grain': {
 					'0%, 100%': { transform: 'translate(0,0)' },
@@ -108,16 +134,27 @@ export default {
 					'80%': { transform: 'translate(3%,-2%)' },
 					'90%': { transform: 'translate(-1%,1%)' },
 				},
+				'pulse-red': {
+					'0%, 100%': { boxShadow: '0 0 12px hsl(18, 90%, 52%)' },
+					'50%': { boxShadow: '0 0 32px hsl(18, 90%, 52%), 0 0 60px hsl(18, 80%, 40%)' },
+				},
+				'shimmer': {
+					'0%': { backgroundPosition: '-200% center' },
+					'100%': { backgroundPosition: '200% center' },
+				},
 			},
 			animation: {
 				'accordion-down': 'accordion-down 0.2s ease-out',
 				'accordion-up': 'accordion-up 0.2s ease-out',
-				'fade-in': 'fade-in 0.8s cubic-bezier(0.16,1,0.3,1) forwards',
-				'fade-in-left': 'fade-in-left 0.8s cubic-bezier(0.16,1,0.3,1) forwards',
-				'line-expand': 'line-expand 1.2s cubic-bezier(0.16,1,0.3,1) forwards',
-				'shimmer': 'shimmer 3s linear infinite',
+				'fade-in': 'fade-in 0.6s cubic-bezier(0.16,1,0.3,1) forwards',
+				'fade-in-left': 'fade-in-left 0.6s cubic-bezier(0.16,1,0.3,1) forwards',
+				'line-expand': 'line-expand 1s cubic-bezier(0.16,1,0.3,1) forwards',
+				'slam': 'slam 0.5s cubic-bezier(0.16,1,0.3,1) forwards',
+				'flicker': 'flicker 3s ease-in-out infinite',
 				'float': 'float 4s ease-in-out infinite',
 				'grain': 'grain 0.8s steps(1) infinite',
+				'pulse-red': 'pulse-red 2s ease-in-out infinite',
+				'shimmer': 'shimmer 3s linear infinite',
 			}
 		}
 	},

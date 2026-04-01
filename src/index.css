@@ -4,48 +4,60 @@
 
 @layer base {
   :root {
-    --background: 20 8% 6%;
-    --foreground: 40 20% 92%;
+    /* TF2 Color Palette */
+    /* BLU team industrial dark background */
+    --background: 210 15% 11%;
+    --foreground: 36 60% 88%;
 
-    --card: 20 6% 9%;
-    --card-foreground: 40 20% 92%;
+    --card: 210 15% 14%;
+    --card-foreground: 36 60% 88%;
 
-    --popover: 20 6% 9%;
-    --popover-foreground: 40 20% 92%;
+    --popover: 210 15% 14%;
+    --popover-foreground: 36 60% 88%;
 
-    --primary: 42 80% 68%;
-    --primary-foreground: 20 8% 6%;
+    /* TF2 RED team orange-red as primary */
+    --primary: 18 90% 52%;
+    --primary-foreground: 210 15% 8%;
 
-    --secondary: 20 6% 14%;
-    --secondary-foreground: 40 20% 92%;
+    --secondary: 210 15% 18%;
+    --secondary-foreground: 36 60% 88%;
 
-    --muted: 20 6% 12%;
-    --muted-foreground: 40 10% 55%;
+    --muted: 210 15% 16%;
+    --muted-foreground: 36 20% 55%;
 
-    --accent: 42 80% 68%;
-    --accent-foreground: 20 8% 6%;
+    --accent: 38 85% 55%;
+    --accent-foreground: 210 15% 8%;
 
     --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 40 20% 92%;
+    --destructive-foreground: 36 60% 88%;
 
-    --border: 40 10% 16%;
-    --input: 40 10% 16%;
-    --ring: 42 80% 68%;
+    --border: 210 12% 22%;
+    --input: 210 12% 22%;
+    --ring: 18 90% 52%;
 
-    --radius: 0.25rem;
+    --radius: 0rem;
 
-    --gold: 42 80% 68%;
-    --gold-light: 42 90% 80%;
-    --gold-muted: 42 40% 40%;
+    /* TF2 Custom colors */
+    --tf2-red: 18 90% 52%;
+    --tf2-orange: 28 95% 58%;
+    --tf2-yellow: 44 95% 62%;
+    --tf2-metal: 210 8% 38%;
+    --tf2-metal-light: 210 8% 55%;
+    --tf2-metal-dark: 210 12% 18%;
+    --tf2-cream: 36 55% 82%;
+    --tf2-dark: 210 15% 8%;
+    --tf2-rust: 12 70% 42%;
+    --tf2-blu: 216 55% 42%;
+    --tf2-blu-dark: 216 45% 28%;
 
-    --sidebar-background: 20 8% 6%;
-    --sidebar-foreground: 40 20% 92%;
-    --sidebar-primary: 42 80% 68%;
-    --sidebar-primary-foreground: 20 8% 6%;
-    --sidebar-accent: 20 6% 12%;
-    --sidebar-accent-foreground: 40 20% 92%;
-    --sidebar-border: 40 10% 16%;
-    --sidebar-ring: 42 80% 68%;
+    --sidebar-background: 210 15% 9%;
+    --sidebar-foreground: 36 60% 88%;
+    --sidebar-primary: 18 90% 52%;
+    --sidebar-primary-foreground: 210 15% 8%;
+    --sidebar-accent: 210 15% 16%;
+    --sidebar-accent-foreground: 36 60% 88%;
+    --sidebar-border: 210 12% 22%;
+    --sidebar-ring: 18 90% 52%;
   }
 }
 
@@ -55,35 +67,299 @@
   }
 
   body {
-    @apply bg-background text-foreground font-golos;
-    font-weight: 300;
+    @apply bg-background text-foreground;
+    font-family: "Teko", "Arial Narrow", sans-serif;
+    font-weight: 400;
+    background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.015'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
   }
 
   h1,
   h2,
   h3,
   h4 {
-    @apply font-cormorant;
+    font-family: "Teko", "Impact", sans-serif;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
   }
 }
 
 @layer utilities {
-  .text-gold-shimmer {
-    background: linear-gradient(
-      90deg,
-      hsl(var(--gold)) 0%,
-      hsl(var(--gold-light)) 30%,
-      hsl(var(--gold)) 50%,
-      hsl(var(--gold-light)) 70%,
-      hsl(var(--gold)) 100%
-    );
-    background-size: 200% auto;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    animation: shimmer 4s linear infinite;
+  .font-tf2 {
+    font-family: "Teko", "Impact", sans-serif;
   }
 
+  .font-tf2-body {
+    font-family: "Oswald", "Arial Narrow", sans-serif;
+  }
+
+  /* Metal plate effect */
+  .metal-plate {
+    background: linear-gradient(
+      135deg,
+      hsl(210, 10%, 28%) 0%,
+      hsl(210, 8%, 22%) 40%,
+      hsl(210, 10%, 26%) 60%,
+      hsl(210, 8%, 18%) 100%
+    );
+    border: 2px solid hsl(210, 8%, 35%);
+    box-shadow:
+      inset 0 1px 0 hsl(210, 10%, 40%),
+      inset 0 -1px 0 hsl(210, 10%, 12%),
+      0 4px 8px rgba(0, 0, 0, 0.5);
+  }
+
+  .metal-plate-red {
+    background: linear-gradient(
+      135deg,
+      hsl(18, 75%, 28%) 0%,
+      hsl(18, 65%, 22%) 40%,
+      hsl(18, 75%, 26%) 60%,
+      hsl(18, 65%, 18%) 100%
+    );
+    border: 2px solid hsl(18, 70%, 35%);
+    box-shadow:
+      inset 0 1px 0 hsl(18, 80%, 42%),
+      inset 0 -1px 0 hsl(18, 70%, 12%),
+      0 4px 8px rgba(0, 0, 0, 0.5);
+  }
+
+  .metal-plate-blu {
+    background: linear-gradient(
+      135deg,
+      hsl(216, 45%, 28%) 0%,
+      hsl(216, 35%, 22%) 40%,
+      hsl(216, 45%, 26%) 60%,
+      hsl(216, 35%, 18%) 100%
+    );
+    border: 2px solid hsl(216, 40%, 35%);
+    box-shadow:
+      inset 0 1px 0 hsl(216, 50%, 42%),
+      inset 0 -1px 0 hsl(216, 40%, 12%),
+      0 4px 8px rgba(0, 0, 0, 0.5);
+  }
+
+  /* Rivet decoration */
+  .riveted {
+    position: relative;
+  }
+
+  .riveted::before,
+  .riveted::after {
+    content: "";
+    position: absolute;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: radial-gradient(
+      circle at 35% 35%,
+      hsl(210, 10%, 55%),
+      hsl(210, 8%, 28%)
+    );
+    border: 1px solid hsl(210, 8%, 20%);
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+    top: 8px;
+  }
+
+  .riveted::before {
+    left: 8px;
+  }
+  .riveted::after {
+    right: 8px;
+  }
+
+  .riveted-all {
+    position: relative;
+  }
+
+  .riveted-all::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image:
+      radial-gradient(circle at 35% 35%, hsl(210, 10%, 55%), hsl(210, 8%, 28%)),
+      radial-gradient(circle at 35% 35%, hsl(210, 10%, 55%), hsl(210, 8%, 28%)),
+      radial-gradient(circle at 35% 35%, hsl(210, 10%, 55%), hsl(210, 8%, 28%)),
+      radial-gradient(circle at 35% 35%, hsl(210, 10%, 55%), hsl(210, 8%, 28%));
+    background-size:
+      8px 8px,
+      8px 8px,
+      8px 8px,
+      8px 8px;
+    background-position:
+      8px 8px,
+      calc(100% - 8px) 8px,
+      8px calc(100% - 8px),
+      calc(100% - 8px) calc(100% - 8px);
+    background-repeat: no-repeat;
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  /* TF2 warning stripe */
+  .warning-stripe {
+    background: repeating-linear-gradient(
+      -45deg,
+      hsl(44, 95%, 55%),
+      hsl(44, 95%, 55%) 10px,
+      hsl(210, 15%, 11%) 10px,
+      hsl(210, 15%, 11%) 20px
+    );
+  }
+
+  .warning-stripe-red {
+    background: repeating-linear-gradient(
+      -45deg,
+      hsl(18, 90%, 52%),
+      hsl(18, 90%, 52%) 10px,
+      hsl(210, 15%, 8%) 10px,
+      hsl(210, 15%, 8%) 20px
+    );
+  }
+
+  /* TF2 button style */
+  .btn-tf2 {
+    font-family: "Teko", "Impact", sans-serif;
+    font-size: 1.1rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    background: linear-gradient(
+      to bottom,
+      hsl(18, 90%, 58%) 0%,
+      hsl(18, 85%, 44%) 100%
+    );
+    border: 2px solid hsl(18, 80%, 35%);
+    box-shadow:
+      inset 0 1px 0 hsl(18, 90%, 65%),
+      inset 0 -2px 0 hsl(18, 80%, 30%),
+      0 4px 8px rgba(0, 0, 0, 0.5);
+    color: hsl(36, 60%, 95%);
+    transition: all 0.1s;
+    cursor: pointer;
+  }
+
+  .btn-tf2:hover {
+    background: linear-gradient(
+      to bottom,
+      hsl(18, 90%, 62%) 0%,
+      hsl(18, 85%, 48%) 100%
+    );
+    box-shadow:
+      inset 0 1px 0 hsl(18, 90%, 70%),
+      inset 0 -2px 0 hsl(18, 80%, 32%),
+      0 6px 12px rgba(0, 0, 0, 0.6);
+    transform: translateY(-1px);
+  }
+
+  .btn-tf2:active {
+    transform: translateY(1px);
+    box-shadow:
+      inset 0 2px 4px rgba(0, 0, 0, 0.4),
+      0 2px 4px rgba(0, 0, 0, 0.4);
+  }
+
+  .btn-tf2-secondary {
+    font-family: "Teko", "Impact", sans-serif;
+    font-size: 1.1rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    background: linear-gradient(
+      to bottom,
+      hsl(210, 10%, 32%) 0%,
+      hsl(210, 10%, 22%) 100%
+    );
+    border: 2px solid hsl(210, 8%, 30%);
+    box-shadow:
+      inset 0 1px 0 hsl(210, 10%, 40%),
+      inset 0 -2px 0 hsl(210, 10%, 14%),
+      0 4px 8px rgba(0, 0, 0, 0.5);
+    color: hsl(36, 60%, 88%);
+    transition: all 0.1s;
+    cursor: pointer;
+  }
+
+  .btn-tf2-secondary:hover {
+    background: linear-gradient(
+      to bottom,
+      hsl(210, 10%, 36%) 0%,
+      hsl(210, 10%, 26%) 100%
+    );
+    transform: translateY(-1px);
+  }
+
+  /* TF2 panel / card */
+  .tf2-panel {
+    background: linear-gradient(
+      160deg,
+      hsl(210, 12%, 16%) 0%,
+      hsl(210, 12%, 13%) 100%
+    );
+    border: 2px solid hsl(210, 10%, 24%);
+    box-shadow:
+      inset 0 1px 0 hsl(210, 10%, 28%),
+      0 4px 16px rgba(0, 0, 0, 0.4);
+    position: relative;
+  }
+
+  /* Scratch / wear texture */
+  .tf2-worn {
+    position: relative;
+  }
+
+  .tf2-worn::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='1'/%3E%3C/svg%3E");
+    opacity: 0.04;
+    pointer-events: none;
+    mix-blend-mode: overlay;
+  }
+
+  /* TF2 text glow red */
+  .text-tf2-glow {
+    color: hsl(18, 90%, 62%);
+    text-shadow:
+      0 0 20px hsl(18, 90%, 52%),
+      0 0 40px hsl(18, 80%, 40%),
+      0 2px 4px rgba(0, 0, 0, 0.8);
+  }
+
+  .text-tf2-stamp {
+    color: hsl(36, 55%, 82%);
+    text-shadow:
+      2px 2px 0px rgba(0, 0, 0, 0.8),
+      -1px -1px 0 rgba(0, 0, 0, 0.5);
+  }
+
+  /* Hazard border */
+  .hazard-border {
+    border: 3px solid hsl(18, 90%, 52%);
+    box-shadow:
+      0 0 0 1px hsl(18, 70%, 30%),
+      inset 0 0 0 1px hsl(18, 70%, 30%);
+  }
+
+  .border-metal {
+    border-color: hsl(var(--tf2-metal));
+  }
+
+  /* Section divider — TF2 style */
+  .tf2-divider {
+    height: 4px;
+    background: linear-gradient(
+      90deg,
+      transparent 0%,
+      hsl(18, 90%, 52%) 20%,
+      hsl(44, 95%, 62%) 50%,
+      hsl(18, 90%, 52%) 80%,
+      transparent 100%
+    );
+  }
+
+  /* Noise overlay */
   .noise-overlay::before {
     content: "";
     position: fixed;
@@ -91,37 +367,13 @@
     width: 200%;
     height: 200%;
     background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='1'/%3E%3C/svg%3E");
-    opacity: 0.03;
+    opacity: 0.04;
     pointer-events: none;
     z-index: 9999;
     animation: grain 0.8s steps(1) infinite;
   }
 
-  .card-glass {
-    background: linear-gradient(
-      135deg,
-      hsla(40, 10%, 14%, 0.9) 0%,
-      hsla(20, 8%, 10%, 0.6) 100%
-    );
-    backdrop-filter: blur(12px);
-    border: 1px solid hsla(40, 30%, 60%, 0.12);
-  }
-
-  .border-gold-subtle {
-    border-color: hsla(42, 80%, 68%, 0.2);
-  }
-
-  .hover-gold-border {
-    transition:
-      border-color 0.3s ease,
-      box-shadow 0.3s ease;
-  }
-
-  .hover-gold-border:hover {
-    border-color: hsla(42, 80%, 68%, 0.5);
-    box-shadow: 0 0 24px hsla(42, 80%, 68%, 0.08);
-  }
-
+  /* Animation delays */
   .delay-100 {
     animation-delay: 0.1s;
   }
